@@ -7,9 +7,10 @@ public interface IWarehouseRepository
 {
     Task<bool> DoesWarehouseExist(int id);
     Task<bool> DoesProductExist(int id);
-    Task<bool> HasTheOrderBeenFulfilled(int id);
     Task<bool> CheckIfOrderInProductWareHouse(int orderId);
     Task<IActionResult> FulfillOrder(int id);
-    Task<int> InsertRecordIntoProductWarehouse(int productId);
-
+    Task<bool> HasTheOrderBeenCompleted(int orderId);
+    Task<int> CheckIfOrderMatchesTheRequest(int productId, int amount);
+    Task InsertRecordIntoProductWarehouse(int productId, int warehouseId, int orderId, int amount, double price);
+    Task<int> GetProductPrice(int productId);
 }
